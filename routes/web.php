@@ -80,3 +80,5 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/settings/hide-from-home', [SettingsController::class, 'hideFromHome'])->name('settings.hide_from_home');
     Route::post('/settings/set-random-bear-photo', [SettingsController::class, 'setRandomBearPhoto'])->name('settings.set_random_bear_photo');
 });
+
+Route::get('/change-language/{locale}', 'LanguageController@changeLanguage')->name('change.language');

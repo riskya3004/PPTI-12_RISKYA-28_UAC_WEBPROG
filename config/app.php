@@ -16,6 +16,10 @@ return [
     |
     */
 
+    'locale' => 'en', // Setel lokalisasi default ke bahasa Inggris
+    'fallback_locale' => 'en', // Setel lokalisasi fallback ke bahasa Inggris
+    'available_locales' => ['en', 'id'], // Setel lokalisasi yang tersedia (bahasa Inggris dan bahasa Indonesia)
+
     'name' => env('APP_NAME', 'Laravel'),
 
     /*
