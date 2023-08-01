@@ -18,5 +18,4 @@ class LoginController extends Controller
         return view('auth.login');
     }
 
-    // Metode lain dalam LoginController (seperti fungsi login, logout, dll.)
 }

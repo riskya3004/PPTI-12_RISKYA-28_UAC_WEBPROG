@@ -64,13 +64,18 @@ class User extends Authenticatable
     public function getBearPhotoUrlAttribute()
 {
     if ($this->bear_photo) {
-        return asset('path/to/bear/photos/' . $this->bear_photo);
-    } else {
-        return null; 
+            return asset('path/to/bear/photos/' . $this->bear_photo);
+        } else {
+            return null; 
+        }
     }
-}
 
-    
+    public function avatars()
+        {
+            return $this->hasMany(Avatar::class);
+        }
+
+        
 
 
 

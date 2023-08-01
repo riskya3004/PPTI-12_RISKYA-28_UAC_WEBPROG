@@ -73,5 +73,4 @@ class UserController extends Controller
         return back()->with('success', 'Foto profil berhasil dihapus.');
     }
 
-    // Metode-metode lain untuk pengelolaan pengguna, seperti edit, delete, dll.
 }

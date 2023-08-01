@@ -13,54 +13,46 @@ class HobbyController extends Controller
      */
     public function index()
     {
-        //
-    }
+        $hobbies = Hobby::all();
 
-    /**
-     * Show the form for creating a new resource.
-     */
+        return view('hobbies.index', compact('hobbies'));
+    }
     public function create()
     {
-        //
+        return view('hobbies.create');
     }
-
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(StoreHobbyRequest $request)
     {
-        //
-    }
+        $request->validate([
+            'name' => 'required|string|max:255|unique:hobbies',
+        ]);
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Hobby $hobby)
-    {
-        //
-    }
+        Hobby::create([
+            'name' => $request->name,
+        ]);
 
-    /**
-     * Show the form for editing the specified resource.
-     */
+        return redirect()->route('hobbies.index')->with('success', 'Hobby has been added successfully.');
+    }
     public function edit(Hobby $hobby)
     {
-        //
+        return view('hobbies.edit', compact('hobby'));
     }
-
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(UpdateHobbyRequest $request, Hobby $hobby)
     {
-        //
-    }
+        $request->validate([
+            'name' => 'required|string|max:255|unique:hobbies,name,' . $hobby->id,
+        ]);
 
-    /**
-     * Remove the specified resource from storage.
-     */
+        $hobby->update([
+            'name' => $request->name,
+        ]);
+
+        return redirect()->route('hobbies.index')->with('success', 'Hobby has been updated successfully.');
+    }
     public function destroy(Hobby $hobby)
     {
-        //
+        $hobby->delete();
+
+        return redirect()->route('hobbies.index')->with('success', 'Hobby has been deleted successfully.');
     }
 }
